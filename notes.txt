@@ -1,0 +1,10 @@
+==> covidtally.aggregate([ { $group: { _id: null, total: { $sum: '$recovered' } } }, { $project: { _id: 0, total: { $round: ['$total', 5] } } } ])
+
+
+This code is using the MongoDB aggregation pipeline to perform some calculations on the covidtally collection. Here is a breakdown of the pipeline:
+
+$group: This is the first stage of the pipeline and it groups the documents in the collection based on a specified criteria. In this case, it groups all documents into a single group with _id set to null. It then calculates the sum of the recovered field for each document in the group using the $sum operator.
+
+$project: This is the second stage of the pipeline and it reshapes the documents that pass through it. In this case, it removes the _id field from the documents using _id: 0 and rounds the total field to 5 decimal places using $round.
+
+The end result of this pipeline is a single document that contains the total number of recovered cases across all documents in the covidtally collection, rounded to 5 decimal places.
